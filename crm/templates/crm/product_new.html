@@ -1,0 +1,16 @@
+{% extends 'crm/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <style>
+        #id_product, #id_cust_name, #id_p_description, #id_quantity, #id_pickup_time, #id_charge{
+            width:50rem !important;
+        }
+    </style>
+    <div style="padding-left: 26rem;">
+        <h1>Add a New Product</h1>
+        <form method="POST" class="product-form">{% csrf_token %}
+              {{ form|crispy }}
+            <button type="submit" class="save btn btn-primary btnWarning">Save</button>
+        </form>
+    </div>
+{% endblock %}

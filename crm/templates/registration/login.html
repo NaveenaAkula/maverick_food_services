@@ -1,0 +1,35 @@
+{% extends "crm/base.html" %}
+
+{% block content %}
+    <style>
+        form > P > label {
+            font-size: 1.3rem;
+            margin-left: 34rem;
+        }
+    </style>
+    <h2 style="margin-left: 44rem;padding-top: 1rem;">Login</h2>
+    {% if form.errors %}
+    <br />
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <br />
+
+    <form method="post" action="{% url 'login' %}">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <div class="btn-group" role="group" aria-label="Basic example" style="padding-left: 40.5rem !important;">
+          <button type="submit" class="btn btn-primary " style="font-size: 1.3rem;">Login</button>
+          <button type="button" class="btn btn-secondary " style="font-size: 1.3rem;" >
+              <a href="{% url 'crm:password_reset_form' %}">
+                 Reset Password
+              </a>
+             </button>
+            <p><a href="{% url 'crm:signup' %}" style="font-size: 2rem;padding-left: 4rem;"><i class="fa fa-btn fa-sign-out"></i>signup</a></p>
+        </div>
+
+
+
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
+{% endblock %}
+

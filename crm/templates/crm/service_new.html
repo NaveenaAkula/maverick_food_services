@@ -1,0 +1,16 @@
+{% extends 'crm/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <style>
+        #id_cust_name, #id_service_category, #id_description, #id_location, #id_setup_time, #id_cleanup_time, #id_service_charge{
+            width: 50rem;
+        }
+    </style>
+   <div style="padding-left: 26rem;">
+        <h1>Add a New Service</h1>
+        <form method="POST" class="service-form">{% csrf_token %}
+              {{ form|crispy }}
+            <button type="submit" class="save btn btn-primary btnWarning">Save</button>
+        </form>
+   </div>
+{% endblock %}
